@@ -41,7 +41,7 @@ func main() {
 	router := app.NewRouter(categoryController, customerController, orderController, orderproductController, productController)
 
 	server := http.Server{
-		Addr:    "localhost:3000",
+		Addr:    "https://booking-system-management.herokuapp.com/",
 		Handler: middleware.NewAuthMiddleware(router),
 	}
 
