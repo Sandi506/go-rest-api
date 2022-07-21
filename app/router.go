@@ -6,7 +6,9 @@ import (
 	"go-rest-api/exception"
 )
 
-func NewRouter(categoryController controller.CategoryController, customerController controller.CustomerController, orderController controller.OrderController, orderproductController controller.OrderProductController, productController controller.ProductController) *httprouter.Router {
+func NewRouter(categoryController controller.CategoryController, customerController controller.CustomerController,
+	orderController controller.OrderController, orderproductController controller.OrderProductController,
+	productController controller.ProductController) *httprouter.Router {
 	router := httprouter.New()
 
 	router.GET("/api/categories", categoryController.FindAll)

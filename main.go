@@ -9,6 +9,7 @@ import (
 	"go-rest-api/repository"
 	"go-rest-api/service"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -41,7 +42,7 @@ func main() {
 	router := app.NewRouter(categoryController, customerController, orderController, orderproductController, productController)
 
 	server := http.Server{
-		Addr:    "https://booking-system-management.herokuapp.com/",
+		Addr:    "https://booking-system-management.herokuapp.com" + os.Getenv("PORT") + "/",
 		Handler: middleware.NewAuthMiddleware(router),
 	}
 
