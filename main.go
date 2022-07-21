@@ -8,6 +8,7 @@ import (
 	"go-rest-api/middleware"
 	"go-rest-api/repository"
 	"go-rest-api/service"
+	"log"
 	"net/http"
 	"os"
 )
@@ -45,7 +46,7 @@ func main() {
 		Addr:    "https://booking-system-management.herokuapp.com" + os.Getenv("PORT") + "/",
 		Handler: middleware.NewAuthMiddleware(router),
 	}
-
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 	err := server.ListenAndServe()
 	helper.PanicIfError(err)
 }
